@@ -433,7 +433,7 @@ namespace GreatClock.Common.ExcelToSO {
 						content.AppendLine(string.Format("{0}\tprivate {1} _{2};",
 							indent, field.fieldType == eFieldTypes.Strings ? "int[]" : "int", capitalFieldName));
 						content.AppendLine(string.Format("{0}\tprivate {1} _{2}_;", indent, fieldTypeNameScript, capitalFieldName));
-						content.AppendLine(string.Format("{0}\tpublic {1} {2} {{ get {{ return _{3}_; }} }}", indent, fieldTypeNameScript, field.fieldName, capitalFieldName));
+						content.AppendLine(string.Format("{0}\tpublic {1} {2} {{ get {{ return _{3}_; }} set {{ _{3}_ = value; }} }}", indent, fieldTypeNameScript, field.fieldName, capitalFieldName));
 					} else if (settings.compress_color_into_int && field.fieldType == eFieldTypes.Color) {
 						content.AppendLine(string.Format("{0}\tprivate int _{1};", indent, capitalFieldName));
 						content.AppendLine(string.Format("{0}\tpublic {1} {2} {{", indent, fieldTypeNameScript, field.fieldName));
